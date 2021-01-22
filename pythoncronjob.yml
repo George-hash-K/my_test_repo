@@ -1,0 +1,19 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+        name: log2s3
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 5
+      template:
+        spec:
+          containers:
+          - name: log2s3 
+            image: log2s3
+            imagePullPolicy: IfNotPresent
+            command: ["python"]
+            args: ["/app/upload_log_to_s3.py"]
+          restartPolicy: OnFailure
+
