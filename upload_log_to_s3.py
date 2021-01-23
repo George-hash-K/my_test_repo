@@ -10,7 +10,7 @@ from datetime import datetime
 
 t = datetime.now()
 today = t.strftime("%B %d %Y %H:%M:%S")
-print("Today's date:", today)
+print("Today's DATE:", today)
 
 
 mylog = open("/var/log/innovid.log", "a")
@@ -24,6 +24,6 @@ mylog.close()
 s3 = boto3.resource('s3')
 
 
-s3.Bucket('my-freaking-bucket-n2').upload_file('/var/log/innovid.log', 'innovid.log' + str(t))
+s3.Bucket('my-freaking-bucket-n2').upload_file('/var/log/innovid.log', 'innovid.log.' + str(t))
 
 
