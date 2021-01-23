@@ -18,12 +18,10 @@ mylog.write(today)
 mylog.write("\n")
 mylog.close()
 
-
-
-
+# get s3
 s3 = boto3.resource('s3')
 
-
+# upload
 s3.Bucket('my-freaking-bucket-n2').upload_file('/var/log/innovid.log', 'innovid.log.' + str(t))
 
 
